@@ -181,7 +181,6 @@ public class CityActivity extends FrameActivity implements SiderBar.OnTouchingLe
             holder.cityName.setText(name);
             return convertView;
         }
-
     }
 
     public class Holder {
@@ -191,6 +190,10 @@ public class CityActivity extends FrameActivity implements SiderBar.OnTouchingLe
         public TextView cityName;
     }
 
+    /**
+     * 实现SiderBar接口的方法
+     * @param s
+     */
     @Override
     public void onTouchingLetterChanged(String s) {
         //找到listView中显示的索引位置

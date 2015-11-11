@@ -26,24 +26,50 @@ public class SiderBar extends View {
 
     private int choose;
     private OnTouchingLetterChangedListener letterChangedListener;
+    // 26个字母
+    private static String[] sideBar;
+    // 画笔
+    private Paint paint;
 
-    // new 对象时调用
+    /**
+     *  定义监听事件接口
+     */
+    public interface OnTouchingLetterChangedListener {
+        // 根据滑动位置的索引做出处理
+        public void onTouchingLetterChanged(String s);
+    }
+
+    /*
+     * new对象时调用
+     */
     public SiderBar(Context context) {
         super(context);
     }
 
-    // XML文件创建控件对象时调用
+    /*
+     * XML文件创建控件对象时调用
+     */
     public SiderBar(Context context, AttributeSet attrs) {
         super(context, attrs);
+        // 初始化视图
+        initView();
     }
 
-    // 26个字母
-    public static String[] sideBar = {"热门", "A", "B", "C", "D", "E", "F", "G", "H", "I",
-            "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V",
-            "W", "X", "Y", "Z"};
+    /**
+     * 初始化
+     */
+    private void initView() {
+        // 画笔
+        paint = new Paint();
+        // 26个字母
+        sideBar = new String[]{"热门", "A", "B", "C", "D", "E", "F", "G", "H", "I",
+                "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V",
+                "W", "X", "Y", "Z"};
+    }
 
-    // 画笔
-    private Paint paint = new Paint();
+    public void setOnTouchingLetterChangedListener(OnTouchingLetterChangedListener onTouchingLetterChangedListener) {
+        this.letterChangedListener = onTouchingLetterChangedListener;
+    }
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -53,11 +79,9 @@ public class SiderBar extends View {
         // 设置字体样式粗体
         paint.setTypeface(Typeface.DEFAULT_BOLD);
         paint.setTextSize(20);
-
         // 获取自定义View的宽和高
         int height = getHeight();
         int width = getWidth();
-
         // 设定每一个字母所在控件的高度
         int each_height = height / sideBar.length;
 
@@ -71,34 +95,27 @@ public class SiderBar extends View {
         }
     }
 
-    // 定义监听事件
-    public interface OnTouchingLetterChangedListener {
-        //根据滑动位置的索引做出处理
-        public void onTouchingLetterChanged(String s);
-    }
-
-    public void setOnTouchingLetterChangedListener(OnTouchingLetterChangedListener onTouchingLetterChangedListener) {
-        this.letterChangedListener = onTouchingLetterChangedListener;
-    }
-
-    // 分发对应的touch监听
+    /**
+     * 分发对应的touch监听
+     */
     @Override
-    public boolean dispatchTouchEvent(MotionEvent event) {
+    public boolean onTouchEvent(MotionEvent event) {
+        super.onTouchEvent(event);
 
         // 获取对应的动作
         final int action = event.getAction();
         // 点击的y坐标
         final float y = event.getY();
-
         final OnTouchingLetterChangedListener listener = letterChangedListener;
-        // 获取点击y轴坐标所占总高度的比例 * 数组的长度 = 数组中点击的字母索引
+        // 数组中点击的字母索引 = 获取点击y轴坐标所占总高度的比例 * 数组的长度
         final int c = (int) (y / getHeight() * sideBar.length);
 
         switch (action) {
             //抬起
             case MotionEvent.ACTION_UP:
                 setBackgroundResource(android.R.color.transparent);
-                invalidate();
+                // 重新初始化界面
+                flushView();
                 break;
 
             default:
@@ -108,12 +125,20 @@ public class SiderBar extends View {
                         listener.onTouchingLetterChanged(sideBar[c]);
                     }
                     choose = c;
-                    invalidate();
+                    // 重新初始化界面
+                    flushView();
                 }
                 break;
         }
         return true;
+    }
 
+    /**
+     * 刷新视图
+     */
+    protected void flushView() {
+        // 刷新当前view会导致ondraw方法的执行
+        invalidate();
     }
 }
 
