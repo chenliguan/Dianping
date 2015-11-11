@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/normal_bg_color"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/index_city_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/normal_orange_color"
+        android:gravity="center_vertical" >
+        
+        <TextView
+            android:id="@+id/index_city_back"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:drawableLeft="@mipmap/back"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:text="@string/city_choose"/>
+        
+        <TextView 
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="1dp"/>
+
+        <ImageView
+            android:id="@+id/index_city_flushcity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/map_refresh"
+            android:contentDescription="@null" 
+            android:padding="10dp"/>
+        
+    </LinearLayout>
+
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/index_city_top"
+        android:orientation="horizontal">
+        
+        <ListView
+	        android:id="@+id/city_list"
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:cacheColorHint="@color/normal_bg_color" 
+	        android:scrollbars="none"
+	        android:layout_marginRight="@dimen/little_space">
+	    </ListView>
+
+	    <com.guan.view.SiderBar
+	        android:id="@+id/city_side_bar"
+	        android:layout_width="@dimen/normal_input_height"
+	        android:layout_height="match_parent"
+	        android:layout_alignParentRight="true"
+	        android:layout_alignParentTop="true" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

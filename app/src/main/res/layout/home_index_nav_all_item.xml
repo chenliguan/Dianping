@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" 
+    android:padding="@dimen/normal_space">
+    
+    <ImageView
+        android:id="@+id/home_nav_all_item_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@null"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/little_space"
+        android:src="@mipmap/ic_food"/>
+    
+    <TextView 
+        android:id="@+id/home_nav_all_item_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:drawablePadding="@dimen/little_space"
+        android:layout_toRightOf="@id/home_nav_all_item_image"
+        android:text="@string/app_name"/>
+    <TextView 
+        android:id="@+id/home_nav_all_item_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:text="1100"
+        android:textColor="@color/gray"
+        android:layout_alignParentRight="true"/>
+
+</RelativeLayout>

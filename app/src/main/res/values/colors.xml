@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="normal_bg_color">#66E0DFE0</color>
+    <color name="white">#FFFFFF</color>
+    <color name="normal_orange_color">#FF6633</color>
+    <color name="gray">#696969</color>
+    <color name="location_city_bg">#e1e1e0</color>
+</resources>

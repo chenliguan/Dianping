@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+    android:background="@drawable/city_item_color_selector">
+    
+    <TextView 
+        android:id="@+id/city_list_item_sort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/normal_space"
+        android:textSize="@dimen/text_size_defalut"
+        android:text="A"
+        android:background="@color/normal_bg_color"/>
+    <TextView 
+        android:id="@+id/city_list_item_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/normal_space"
+        android:textSize="@dimen/text_size_defalut"
+        android:text="@string/city_name"/>
+
+</LinearLayout>

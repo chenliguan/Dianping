@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/normal_orange_color"
+        android:gravity="center_horizontal"
+        android:padding="10dp"
+        android:text="发现"
+        android:textSize="@dimen/big_space" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.amap.api.maps.MapView
+            android:id="@+id/search_mymap"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <ImageView
+            android:id="@+id/search_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:background="#88666666"
+            android:contentDescription="@null"
+            android:padding="10dp"
+            android:src="@mipmap/back" />
+
+        <ImageView
+            android:id="@+id/search_refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_margin="20dp"
+            android:background="#88666666"
+            android:contentDescription="@null"
+            android:paddingBottom="7dp"
+            android:paddingLeft="7dp"
+            android:paddingRight="8dp"
+            android:paddingTop="5dp"
+            android:src="@mipmap/map_refresh" />
+    </RelativeLayout>
+</LinearLayout>
