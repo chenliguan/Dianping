@@ -81,15 +81,17 @@ public class SiderBar extends View {
         this.letterChangedListener = onTouchingLetterChangedListener;
     }
 
-    // 分发对应的touch监听
+    /**
+     * 分发对应的touch监听
+     */
     @Override
-    public boolean dispatchTouchEvent(MotionEvent event) {
+    public boolean onTouchEvent(MotionEvent event) {
+        super.onTouchEvent(event);
 
         // 获取对应的动作
         final int action = event.getAction();
         // 点击的y坐标
         final float y = event.getY();
-
         final OnTouchingLetterChangedListener listener = letterChangedListener;
         // 获取点击y轴坐标所占总高度的比例 * 数组的长度 = 数组中点击的字母索引
         final int c = (int) (y / getHeight() * sideBar.length);
